@@ -1,0 +1,47 @@
+<main class="container mt-5">
+  <h1 class="mb-5 text-center bold">Recupera tu contraseña!</h1>
+  <form id="registerForm" (ngSubmit)="submit()" [formGroup]="form">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">
+        Antigua Contraseña</label
+      >
+      <input type="text" class="form-control" formControlName="oldPassword" />
+      <div id="oldPasswordCompletoHelp" class="form-text text-danger"></div>
+      <div
+        *ngIf="f.oldPassword.errors?.['minlength']"
+        class="form-text text-danger"
+      >
+        Debe tener mas de de 2 letras
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+      <input type="text" class="form-control" formControlName="password" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label"
+        >Confirmar Contraseña</label
+      >
+      <input
+        class="form-control"
+        formControlName="passwordConfirm"
+        type="password"
+      />
+    </div>
+    <div id="passwordHelp"></div>
+    <div
+      *ngIf="form.errors?.['passwordsMismatch']"
+      class="form-text text-danger"
+    >
+      Las contraseñas no coinciden.
+    </div>
+    <button
+      type="submit"
+      class="btn btn-outline-primary"
+      [disabled]="form.invalid"
+    >
+      Enviar
+    </button>
+  </form>
+</main>
